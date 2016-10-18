@@ -1,0 +1,11 @@
+{
+  "name": "tictactoe",
+  "version": "1.0.0",
+  "description": "Two player game on a 3x3 board. First to connect 3 wins!",
+  "main": "index.js",
+  "scripts": {
+    "test": "npm test"
+  },
+  "author": "Christopher Wong",
+  "license": "ISC"
+}
