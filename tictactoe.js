@@ -26,8 +26,9 @@ class Player {
     //   rl.pause();
     //   return answer;
     // });
-    var move = prompt(this.name + ', what is your move? [x,x]');
-    return move;
+    var move = prompt(this.name + ', what is your move? x,x').split(',');
+
+    return [parseInt(move[0]), parseInt(move[1])];
   }
 }
 
@@ -54,6 +55,16 @@ class Board {
 
   checkDiagonals(piece){
 
+  }
+
+  placePiece(piece, pos) {
+    this.grid[pos[0]][pos[1]] = piece;
+    this.displayBoard();
+  }
+
+  displayBoard() {
+    console.log(` ${this.grid[0][0]}  |  ${this.grid[0][1]}  |  ${this.grid[0][2]} \n ____|____|____\n ${this.grid[1][0]}  |  ${this.grid[1][1]}  |  ${this.grid[1][2]} \n ____|____|____\n ${this.grid[2][0]}  |  ${this.grid[2][1]}  |  ${this.grid[2][2]}
+    `)
   }
 }
 
@@ -93,7 +104,10 @@ class TicTacToe {
 
     while(!this.board.gameOver()) {
       this.turn = this.turn === this.playerX ? this.playerO : this.playerX;
-      this.turn.getMove();
+      var move = this.turn.getMove();
+      var piece = this.turn === this.playerX ? 'X' : 'O';
+      this.board.placePiece(piece, move);
+
       }
   }
 }
